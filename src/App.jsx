@@ -8,7 +8,7 @@ import NotFound from "./Pages/NotFound";
 
 const App = () => {
   return (
-    <div>
+    <>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -19,7 +19,7 @@ const App = () => {
         </Routes>
         <CustomFooter />
       </BrowserRouter>
-    </div>
+    </>
   );
 };
 
