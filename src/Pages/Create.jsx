@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "flowbite-react";
 import FormFieldWithLabel from "../components/FormFieldWithLabel";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const [formField, setFormField] = useState({
@@ -10,14 +12,23 @@ const Create = () => {
     productImage: "",
   });
 
+  // Used to navigate between pages
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormField((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formField);
+    try {
+      await axios.post(
+        "https://6904bdb96b8dabde4964edb9.mockapi.io/products/getAll",
+        formField
+      );
+      navigate("/");
+    } catch (error) {}
   };
 
   return (
